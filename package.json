@@ -1,0 +1,20 @@
+{
+  "name": "workers-hexo-search",
+  "version": "1.0.0",
+  "description": "Multi-site Hexo search script built with Cloudflare Workers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kwaa/workers-hexo-search.git"
+  },
+  "keywords": [],
+  "author": "kwaa",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/kwaa/workers-hexo-search/issues"
+  },
+  "homepage": "https://github.com/kwaa/workers-hexo-search#readme"
+}
