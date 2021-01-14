@@ -41,14 +41,14 @@ There are two ways to use as a reference:
 
 ```html
 <form onkeydown="if (event.keyCode == 13) return false">
-  <input type="text" id="input" name="q">
+  <input type="text" id="searchTerm" name="q">
 </form>
 <div id="result"></div>
 <script>
-  document.getElementById('input').addEventListener('input', () => {
+  document.getElementById('searchTerm').addEventListener('input', () => {
     document.getElementById('result').innerHTML = ''
-    let keyword = document.getElementById('input').value.trim().toLowerCase();
-    if (keyword.length > 0) fetch(`https://${workers}/?siteSearch=${site}&q=${keyword}`)
+    let searchTerm = document.getElementById('searchTerm').value.trim().toLowerCase();
+    if (searchTerm.length > 0) fetch(`https://${workers}/?siteSearch=${site}&q=${searchTerm}`)
       .then(res => res.json().then(json => json.items.forEach(({ title, link, snippet }) =>
         document.getElementById('result').insertAdjacentHTML('beforeend', `
           <div>
@@ -64,12 +64,12 @@ There are two ways to use as a reference:
 > Instant search / 即时搜索
 
 ```html
-<form onsubmit="return searchAPI(this.searchTerm.value)">
+<form onsubmit="return search(this.searchTerm.value)">
   <input type="text" id="searchTerm" name="q">
 </form>
 <div id="api-result"></div>
 <script>
-  function searchAPI(searchTerm) {
+  function search(searchTerm) {
     fetch(`https://${workers}/?siteSearch=${site}&q=${searchTerm}`)
       .then(res => res.json().then(json => json.items.forEach(({title, link, snippet}) =>
         document.getElementById('api-result').insertAdjacentHTML('beforeend', `
