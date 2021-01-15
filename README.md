@@ -33,7 +33,15 @@ const [site, error] = [{
 
 Only the ```search.json``` file generated with [hexo-search-generator](https://github.com/wzpan/hexo-generator-search) is supported, not support XML format.
 
-仅支持用 [hexo-search-generator](https://github.com/wzpan/hexo-generator-search) 生成的 ```search.json``` 文件，不支持 XML 格式。
+仅支持通过 [hexo-search-generator](https://github.com/wzpan/hexo-generator-search) 生成的 ```search.json``` 文件，不支持 XML 格式。
+
+(If you deploy via button) Edit ```wrangler.toml``` to rename the Worker name:
+
+（如果你通过按钮部署）编辑 ```wrangler.toml``` 以重命名 Worker 名称：
+
+```toml
+name = "hexo-search"
+```
 
 ## Example / 用例
 
@@ -92,4 +100,4 @@ There are two ways to use as a reference:
 
 This work is distributed under the WTFPL licence. See the [COPYING](https://github.com/kwaa/workers-hexo-search/blob/master/COPYING) file for more details.
 
-此项目是根据 WTFPL 协议分发的。有关更多详细信息，请参见 [COPYING](https://github.com/kwaa/workers-hexo-search/blob/master/COPYING) 文件。
+此项目是根据 WTFPL 许可证分发的。有关更多详细信息，请参见 [COPYING](https://github.com/kwaa/workers-hexo-search/blob/master/COPYING) 文件。
