@@ -6,9 +6,9 @@ Multi-site Hexo search script built with Cloudflare Workers.
 
 ## Deploy / 部署
 
-- A: Copy the [index.js](https://github.com/kwaa/workers-hexo-search/blob/master/index.js) in this repository to the Cloudflare Worker quick editor, and click "Save and Deploy"
+- A: Copy the [index.js](https://github.com/kwaa/workers-hexo-search/blob/master/index.js) in this repository to the Cloudflare Workers quick editor, and click "Save and Deploy"
 
-    复制本仓库中的 [index.js](https://github.com/kwaa/workers-hexo-search/blob/master/index.js) 到 Cloudflare Worker 快速编辑器，点击 "保存并部署"
+    复制本仓库中的 [index.js](https://github.com/kwaa/workers-hexo-search/blob/master/index.js) 到 Cloudflare Workers 快速编辑器，然后点击 "保存并部署"
 
 - B: Use the "Deploy with Workers" button below
 
@@ -67,12 +67,12 @@ There are two ways to use as a reference:
 <form onsubmit="return search(this.searchTerm.value)">
   <input type="text" id="searchTerm" name="q">
 </form>
-<div id="api-result"></div>
+<div id="result"></div>
 <script>
   function search(searchTerm) {
     fetch(`https://${workers}/?siteSearch=${site}&q=${searchTerm}`)
       .then(res => res.json().then(json => json.items.forEach(({title, link, snippet}) =>
-        document.getElementById('api-result').insertAdjacentHTML('beforeend', `
+        document.getElementById('result').insertAdjacentHTML('beforeend', `
           <div>
             <a href="${link}">${title}</a>
             <span>${snippet}</span>
