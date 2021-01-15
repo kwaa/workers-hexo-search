@@ -21,13 +21,13 @@ async function search(searchTerm, searchSite) {
     if (!data[searchSite]) await get(searchSite)
     let result = { "items": [] }
     data[searchSite].forEach(({ title, content, url }) => {
-        const push = excerpt => result.items.push({
-            "title": title,
+        const push = snippet => result.items.push({
+            "title": title || url,
             "link": url,
-            "snippet": excerpt
+            "snippet": snippet || ""
         })
-        if (content.toLowerCase().includes(searchTerm)) push(content.replace(/<[^>]+>/g, "").substring((content.toLowerCase().indexOf(searchTerm) - 20), (content.toLowerCase().indexOf(searchTerm) + 119)))
-        else if (title.toLowerCase().includes(searchTerm)) push(content.replace(/<[^>]+>/g, "").substring(0, 139))
+        if (content && content.toLowerCase().includes(searchTerm)) push(content.replace(/<[^>]+>/g, "").substring((content.toLowerCase().indexOf(searchTerm) - 20), (content.toLowerCase().indexOf(searchTerm) + 119)))
+        else if (title && title.toLowerCase().includes(searchTerm)) push(content.replace(/<[^>]+>/g, "").substring(0, 139))
     })
     return JSON.stringify(result, null, 2)
 }
