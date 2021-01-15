@@ -44,6 +44,29 @@ There are two ways to use as a reference:
 > Press ENTER to search / 回车搜索
 
 ```html
+<form onsubmit="return search(this.searchTerm.value)">
+  <input type="text" id="searchTerm" name="q">
+</form>
+<div id="result"></div>
+<script>
+  function search(searchTerm) {
+    fetch(`https://${workers}/?siteSearch=${site}&q=${searchTerm}`)
+      .then(res => res.json().then(json => json.items.forEach(({title, link, snippet}) =>
+        document.getElementById('result').insertAdjacentHTML('beforeend', `
+          <div>
+            <a href="${link}">${title}</a>
+            <span>${snippet}</span>
+          </div>
+        `)
+      )));
+    return false;
+  }
+</script>
+```
+
+> Instant search / 即时搜索
+
+```html
 <form onkeydown="if (event.keyCode == 13) return false">
   <input type="text" id="searchTerm" name="q">
 </form>
@@ -65,31 +88,8 @@ There are two ways to use as a reference:
 </script>
 ```
 
-> Instant search / 即时搜索
-
-```html
-<form onsubmit="return search(this.searchTerm.value)">
-  <input type="text" id="searchTerm" name="q">
-</form>
-<div id="result"></div>
-<script>
-  function search(searchTerm) {
-    fetch(`https://${workers}/?siteSearch=${site}&q=${searchTerm}`)
-      .then(res => res.json().then(json => json.items.forEach(({title, link, snippet}) =>
-        document.getElementById('result').insertAdjacentHTML('beforeend', `
-          <div>
-            <a href="${link}">${title}</a>
-            <span>${snippet}</span>
-          </div>
-        `)
-      )));
-    return false;
-  }
-</script>
-```
-
 ## License / 许可证
 
 This work is distributed under the WTFPL licence. See the [COPYING](https://github.com/kwaa/workers-hexo-search/blob/master/COPYING) file for more details.
 
-这个项目是根据 WTFPL 协议分发的。有关更多详细信息，请参见 [COPYING](https://github.com/kwaa/workers-hexo-search/blob/master/COPYING) 文件。
+此项目是根据 WTFPL 协议分发的。有关更多详细信息，请参见 [COPYING](https://github.com/kwaa/workers-hexo-search/blob/master/COPYING) 文件。
