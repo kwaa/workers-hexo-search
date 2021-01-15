@@ -31,6 +31,10 @@ const [site, error] = [{
     required: q`]
 ```
 
+Only the ```search.json``` file generated with [hexo-search-generator](https://github.com/wzpan/hexo-generator-search) is supported, not support XML format.
+
+仅支持用 [hexo-search-generator](https://github.com/wzpan/hexo-generator-search) 生成的 ```search.json``` 文件，不支持 XML 格式。
+
 ## Example / 用例
 
 There are two ways to use as a reference:

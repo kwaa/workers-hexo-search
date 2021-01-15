@@ -1,8 +1,7 @@
 'use strict';
 
 const [site, error] = [{
-    "example.com": "https://example.com/search.json",
-    "https://example.com": "https://example.com/search.json",
+    "demo_output": "https://cdn.jsdelivr.net/gh/wzpan/hexo-generator-search@master/demo_output/search.json"
     }, `usage:\n\
     ?siteSearch=<site>&q=<keyword>\n\
     required: q`]
