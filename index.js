@@ -35,9 +35,8 @@ async function search(searchTerm, searchSite) {
 
 async function handleRequest(request) {
     const { searchParams } = new URL(request.url)
-    let [searchTerm, searchSite, res] = [searchParams.get('q'), searchParams.get('siteSearch') === null ? Object.values(site)[0] : site[searchParams.get('siteSearch')]]
-    searchTerm === null ? res = error : res = await search(searchTerm, searchSite)
-    return new Response(res, {
+    let [searchTerm, searchSite] = [searchParams.get('q'), searchParams.get('siteSearch') === null ? Object.values(site)[0] : site[searchParams.get('siteSearch')]]
+    return new Response(searchTerm === null ? error : await search(searchTerm, searchSite), {
         status: 200,
         headers: new Headers({
             'access-control-allow-origin': '*',
